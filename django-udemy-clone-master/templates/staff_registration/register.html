@@ -1,0 +1,33 @@
+{% extends 'layouts/base.html' %}
+
+{% load static %}
+
+{% block content %}
+  <h1>Register as Staff</h1>
+
+  <form method="POST" action="{% url 'staff_registration:register' %}">
+    {% csrf_token %}
+    
+    <div>
+      <label for="id_username">Username:</label>
+      {{ form.username }}
+    </div>
+    
+    <div>
+      <label for="id_email">Email:</label>
+      {{ form.email }}
+    </div>
+    
+    <div>
+      <label for="id_password1">Password:</label>
+      {{ form.password1 }}
+    </div>
+    
+    <div>
+      <label for="id_password2">Confirm Password:</label>
+      {{ form.password2 }}
+    </div>
+    
+    <button type="submit">Register</button>
+  </form>
+{% endblock %}

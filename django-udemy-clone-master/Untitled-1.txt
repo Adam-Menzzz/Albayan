@@ -1,0 +1,8 @@
+-- database: d:\islam-learn-django\django-udemy-clone-master\db.sqlite3
+
+-- Use the ▷ button in the top right corner to run the entire file.
+
+DELETE FROM "courses_course" WHERE id IN (
+  SELECT id FROM "courses_course" ORDER BY id DESC LIMIT 20
+);
+

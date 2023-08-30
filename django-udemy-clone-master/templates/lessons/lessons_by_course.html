@@ -1,0 +1,127 @@
+<!-- lessons/lessons_by_course.html -->
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+  <style>
+    .playlist {
+      display: flex;
+      margin-top: 20px;
+    }
+
+    .sidebar {
+      flex-basis: 30%;
+      padding-right: 20px;
+    }
+
+    .lesson-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .lesson {
+      background-color: #f8f8f8;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+
+    .lesson h2 {
+      margin-top: 0;
+    }
+
+    .video-container {
+      flex-basis: 70%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+    }
+
+    .video-container video {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 5px;
+    }
+
+    .sidebar {
+      flex-basis: 30%;
+      padding-right: 20px;
+    }
+
+    .chapter-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .chapter {
+      margin-bottom: 10px;
+    }
+
+    .udemy-button {
+      background-color: #f5f8fa;
+      color: #0653b3;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .udemy-button:hover {
+      background-color: #e3f1fb;
+    }
+  </style>
+  
+  <div class="playlist">
+    <div class="sidebar">
+      <ul class="lesson-list">
+        {% for lesson in lessons %}
+          <li class="lesson">
+            <h2>{{ lesson.title }}</h2>
+            <div class="chapter-buttons">
+              {% if lesson.chapter1 %}
+                <div class="chapter">
+                  <button onclick="playChapter('{{ lesson.chapter1.url }}')" class="udemy-button">Chapter 1</button>
+                </div>
+              {% endif %}
+              {% if lesson.chapter2 %}
+                <div class="chapter">
+                  <button onclick="playChapter('{{ lesson.chapter2.url }}')" class="udemy-button">Chapter 2</button>
+                </div>
+              {% endif %}
+              {% if lesson.chapter3 %}
+                <div class="chapter">
+                  <button onclick="playChapter('{{ lesson.chapter3.url }}')" class="udemy-button">Chapter 3</button>
+                </div>
+              {% endif %}
+              {% if lesson.chapter4 %}
+                <div class="chapter">
+                  <button onclick="playChapter('{{ lesson.chapter4.url }}')" class="udemy-button">Chapter 4</button>
+                </div>
+              {% endif %}
+              {% if lesson.chapter5 %}
+                <div class="chapter">
+                  <button onclick="playChapter('{{ lesson.chapter5.url }}')" class="udemy-button">Chapter 5</button>
+                </div>
+              {% endif %}
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="video-container">
+      <video id="lesson-video" controls></video>
+    </div>
+  </div>
+
+  <script>
+    function playChapter(src) {
+      var video = document.getElementById('lesson-video');
+      video.src = src;
+      video.load();
+      video.play();
+    }
+  </script>
+{% endblock %}

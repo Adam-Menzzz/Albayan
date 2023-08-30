@@ -1,0 +1,80 @@
+{% extends 'layouts/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+<style>
+    /* Add some spacing to the top and bottom of the page */
+    .course-modules-list {
+        padding: 40px 0;
+    }
+
+    /* Style the card container */
+    .card {
+        border: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: 0.3s;
+        border-radius: 10px;
+        overflow: hidden;
+        background-color: #fff;
+    }
+
+    /* Style the card title */
+    .card-title {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        color: #333;
+        text-align: center;
+    }
+
+    /* Style the card text */
+    .card-text {
+        color: #666;
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+
+    /* Style the "View Module" button */
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    /* Create a responsive layout */
+    @media (max-width: 767px) {
+        .card {
+            margin-bottom: 20px;
+        }
+    }
+</style>
+
+<section class="course-modules-list">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="text-center mb-5">Modules for {{ course.title }}</h1>
+                <div class="row">
+                    {% for module in course.modules.all %}
+                    <div class="col-lg-4 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ module.title }}</h5>
+                                <!-- <p class="card-text">{{ module.text }}</p> -->
+                                <a href="{% url 'accounts:course-modules-single' course_slug=course.slug module_title=module.title %}" class="btn btn-primary btn-block">View Module</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

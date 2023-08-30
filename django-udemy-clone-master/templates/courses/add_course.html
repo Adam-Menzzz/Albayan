@@ -1,0 +1,19 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+  <h1>Add Course</h1>
+
+  <form method="POST" action="" enctype="multipart/form-data" class="add-course-form">
+    {% csrf_token %}
+    
+    {{ course_form.as_p }}
+
+    <hr>
+
+    <h2>Lessons</h2>
+    {{ lesson_form.as_p }}
+
+    <input type="submit" value="Add Course" class="btn btn-primary">
+  </form>
+{% endblock %}
