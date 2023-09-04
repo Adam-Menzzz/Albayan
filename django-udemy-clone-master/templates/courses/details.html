@@ -259,34 +259,21 @@
                             </a>
                         </div>
                         <div class="course-sidebar-text-box">
-                            <div class="price">
+                            {% comment %} <div class="price">
                                 <span class="current-price">
                                     $<span class="current-price">{{ course.price | floatformat:2 | intcomma }}</span></span>
                                 <input type="hidden" id="total_price_of_checking_out" value="{{ course.price | floatformat:2 }}">
-                            </div>
+                            </div> {% endcomment %}
 
                             {#                            {{ --<div class="buy-btns">--}}#}
                             {#                            {{ --<button class="btn btn-buy-now" type="button">Already purchased</button>--}}#}
                             {#                            {{ --</div>--}}#}
-                            {% if request.user.is_staff or request.user.is_superuser %}
+
+                            {% comment %} {% if request.user.is_staff or request.user.is_superuser %}
                             <div class="buy-btns">
                                 <!-- Inside your template -->
 <!-- Inside your template -->
 <a href="{% url 'accounts:course-modules-list' slug=course.slug %}">View Course Modules</a>
-
-
-                                
-                    
-
-
-                               
-
-                                
-                                  
-                               
-
-
-
 
                             </div>
                         {% else %}
@@ -317,8 +304,8 @@
                                 {% endif %}
                             </div>
                         {% endif %}
-                            </div>
-
+                            </div> {% endcomment %}
+                            <button class="btn btn-add-cart"> coming soon </button>
                             <div class="includes">
                                 <div class="title"><b>Includes:</b></div>
                                 <ul>
