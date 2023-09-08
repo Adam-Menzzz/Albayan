@@ -32,11 +32,17 @@
                         {#                        {{ --<img src="" alt="" height="30">--}}#}
                         Islam Learn
                     </a> -->
+                    <a class="navbar-text" href="https://www.albayancenter.org">
+                        <i class="fas fa-home"></i> <!-- Bootstrap home icon -->
+                        <span class="font-weight-bold ml-2">Home</span> <!-- Bold text -->
+                    </a>
+                    
                     <a class= "navbar-text" >About Us</a>
                     <a class= "navbar-text" >Research & Study</a>
                     {% include 'partials/menu.html' %}
                     <a class= "navbar-text" >Donate</a>
                     <a class= "navbar-text" >Contact Us</a>
+                   
                     <!-- <form class="inline-form" action="{% url 'udemy:search' %}" method="get" style="width: 100%;">
                         <div class="input-group search-box mobile-search">
                             <input type="text" name='q' class="form-control"
@@ -85,13 +91,13 @@
                                         </a>
                                     </li>
 
-                                    {% if not request.user.is_superuser and not request.user.is_staff %}
+                                    {% comment %} {% if not request.user.is_superuser and not request.user.is_staff %}
                                     <li class="user-dropdown-menu-item">
                                         <a href="{% url 'accounts:enrolled-courses' %}">
                                             <i class="fas fa-book-open"></i>Enrolled Courses
                                         </a>
                                     </li>
-                                     {% endif %}
+                                     {% endif %} {% endcomment %}
                                     
                                     {% if request.user.is_staff and not request.user.is_superuser %}
                                         <li class="user-dropdown-menu-item">
@@ -118,7 +124,7 @@
                                     
                                     {% if request.user.is_superuser %}
                                         <li class="user-dropdown-menu-item">
-                                            <a href="http://localhost:8000/admin/login/?next=/admin/">
+                                            <a href="http://albayancenter.org/admin/login/?next=/admin/">
                                                 <i class="fas fa-cogs"></i>Admin
                                             </a>
                                         </li>
